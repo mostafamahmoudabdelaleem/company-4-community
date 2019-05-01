@@ -6,10 +6,10 @@ class DatabaseHandler {
     // Hold the singleton class instance.
     private static $instance = null;
 
-    private $host = 'localhost';          // Server name or IP
-    private $user = 'root';          // Connection username
-    private $pass = '';          // Connection password
-    private $name = 'company_4';          // Database name to connect to it
+    private $host = 'host';          // Server name or IP
+    private $user = 'user';          // Connection username
+    private $pass = 'pass';          // Connection password
+    private $name = 'name';          // Database name to connect to it
 
     private function __construct()
     {

@@ -1,19 +1,14 @@
 <?php
-require '../../Post.php';
+require '../../Comment.php';
 header('Content-Type: application/json');
 
 if(isset($_SERVER['HTTP_API_KEY']) && $_SERVER['HTTP_API_KEY'] == 111111){
-
-    if(isset($_GET['title']) && isset($_GET['desc']) 
-            && isset($_GET['picLink']) && isset($_GET['publisher'])){
-        $post_handler = new PostHandler();
-        $title = $_GET['title'];
-        $desc = $_GET['desc'];
-        $pic_link = $_GET['picLink'];
-        $publisher = $_GET['publisher'];
-        $post_handler->makePost($title, $desc, $pic_link, $publisher);
+    if(isset($_GET['cID'])){
+        $comment_handler = new CommentHandler();
+        $id = $_GET['cID'];
+        $comment_handler->deleteComment($id);
         $result = array(
-            'msg' => "Post created successfully",
+            'msg' => "Comment Deleted successfully",
             'code' => 200
         );
         echo json_encode($result);

@@ -6,10 +6,15 @@ class DatabaseHandler {
     // Hold the singleton class instance.
     private static $instance = null;
 
-    private $host = 'host';          // Server name or IP
-    private $user = 'user';          // Connection username
-    private $pass = 'pass';          // Connection password
-    private $name = 'name';          // Database name to connect to it
+    private $host = 'localhost';          // Server name or IP
+    private $user = 'root';          // Connection username
+    private $pass = '';          // Connection password
+    private $name = 'company_4';          // Database name to connect to it
+
+    private function __construct()
+    {
+      // The expensive process (e.g.,db connection) goes here.
+    }
 
     public static function getInstance()
     {
@@ -24,7 +29,7 @@ class DatabaseHandler {
         $this->isConnected = true;
         // Check connection
         if (!$this->conn->connect_error) {
-            $this->err_msg = $this->conn->connect_error;
+            $this->error_msg = $this->conn->connect_error;
             $this->isConnected = false;
         }
     }
@@ -39,7 +44,7 @@ class DatabaseHandler {
         if ($result) {
             return $result;
         } else {
-            $this->err_msg = $this->conn->connect_error;
+            $this->error_msg = $this->conn->connect_error;
             return null;
         }
     }

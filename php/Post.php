@@ -52,4 +52,13 @@ class PostHandler{
         $this->db_handler->disconnect();
         return $result;
     }
+
+    // $user_id the id of user to get his feed
+    public function getfeed($user_id){
+        $sql = "SELECT * FROM `c4_post` WHERE `p_publisher` in (SELECT `f_follow` FROM `c4_follow` WHERE `f_user` = '$user_id');";
+        $this->db_handler->connect();
+        $result = $this->db_handler->execute_query($sql);
+        $this->db_handler->disconnect();
+        return $result;
+    }
 }
